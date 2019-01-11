@@ -1,0 +1,55 @@
+﻿(function(i, j) {
+    var f = j.createElement("script")
+      , g = j.getElementsByTagName("head")[0];
+    if (!i.alimamatk_show) {
+        f.charset = "utf-8";
+        f.async = true;
+        f.src = "http://static.8ym.cn/Content/js/tkapi.js";
+        g.insertBefore(f, g.firstChild)
+    }
+    var h = {
+        pid: "mm_27914340_37870681_143874112",
+        appkey: "",
+        unid: "",
+        type: "click"
+    };
+    i.alimamatk_onload = i.alimamatk_onload || [];
+    i.alimamatk_onload.push(h)
+}
+)(window, document);
+function getUserCallback(userInfo) {
+    if (userInfo.IsLogin) {
+        if (userInfo.Type == "root" || userInfo.type == "admin") {
+            var e = '<a href="javascript:;" id="edit">编辑</a> / <a href="javascript:;" id="delete">删除</a>';
+            $("#manage").append(e);
+            var g = $("#manage").data("id");
+            $("#update").on("click", function() {});
+            $("#delete").on("click", function() {
+                if (confirm("确定要删除：" + $(".page-header h3").text() + "？")) {
+                    if (g) {
+                        $.post("/Report/delete", {
+                            id: g
+                        }, function(h) {
+                            if (h.success) {
+                                location.reload()
+                            } else {
+                                alert("删除失败")
+                            }
+                        })
+                    }
+                }
+            })
+        }
+    }
+}
+console.log(document.cookie);
+if (document.cookie.indexOf("tmads=1") == -1) {
+    $("#J_2018235644MASK").show();
+    document.cookie = "tmads=1"
+}
+$("#J_MMREDBOX_COVER_BTN_IMG_TEXT").on("click", function() {
+    window.location.href = "https://s.click.taobao.com/6z6YCJw"
+});
+$("#J_2018021127CLOSE_IMG").on("click", function() {
+    $("#J_2018235644MASK").hide()
+});
